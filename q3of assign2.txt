@@ -1,0 +1,54 @@
+sudo su
+
+id
+
+aws --version
+
+pip install -user --upgrade awscli
+
+aws --version
+
+(create vpc)
+aws ec2 create-vpc --cidr-block 10.0.0.0/16
+
+(create subnet in availability zone 1)
+aws ec2 create-subnet --vpc-id vpc-99e344fd --cidr-block 10.0.1.0/24
+
+(create subnet in availability zone 1)
+aws ec2 create-subnet --vpc-id vpc-99e344fd --cidr-block 10.0.2.0/24
+
+(create subnet in availability zone 2)
+aws ec2 create-subnet --vpc-id vpc-99e344fd --cidr-block 10.0.3.0/24
+
+(create subnet in availability zone 2)
+aws ec2 create-subnet --vpc-id vpc-99e344fd --cidr-block 10.0.4.0/24
+
+(create subnet in availability zone 3)
+aws ec2 create-subnet --vpc-id vpc-99e344fd --cidr-block 10.0.5.0/24
+
+
+(create subnet in availability zone 3)
+aws ec2 create-subnet --vpc-id vpc-99e344fd --cidr-block 10.0.6.0/24
+
+(create internet gateway)
+aws ec2 create-internet-gateway
+
+(Attach Internet gateway to VPC)
+aws ec2 attach-internet-gateway --internet-gateway-id igw-5d685a38 --vpc-id vpc-99e344fd
+
+(Create Route Table)
+aws ec2 create-route-table --vpc-id vpc-99e344fd
+
+(Add Internet Gateway Rule to route table)
+aws ec2 create-route --route-table-id rtb-b86fe2dc --destination-cidr-block 0.0.0.0/0 --gateway-id igw-5d685a38
+
+(Associate Route Table to a Subnet1 to make it public)
+aws ec2 associate-route-table --route-table-id rtb-b86fe2dc --subnet-id subnet-3b839262
+
+(Associate Route Table to a Subnet1 to make it public)
+aws ec2 associate-route-table --route-table-id rtb-b86fe2dc --subnet-id subnet-3b839262
+
+(Associate Route Table to a Subnet1 to make it public)
+aws ec2 associate-route-table --route-table-id rtb-b86fe2dc --subnet-id subnet-3b839262
+
+

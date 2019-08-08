@@ -1,0 +1,21 @@
+create ec2 instances – they should be in the same subnet and have the same security group.
+
+Open ports between them – make sure instances can communicate to each other. Use the default security group
+ which has one rule relevant for this case:
+
+Type: All Traffic
+Source: Custom – id of the security group
+
+Log in to the instance you want to connect from to the other instance
+
+Run:
+1 ssh-keygen -t rsa -N "" -f /home/ubuntu/.ssh/id_rsa
+to generate a new rsa key.
+
+Copy your private AWS key as ~/.ssh/my.key (or whatever name you want to use)
+
+Make sure you change the permission to 600
+1 chmod 600 .ssh/my.key
+
+Copy the public key to the instance you wish to connect to passwordless
+1 cat ~/.ssh/id_rsa.pub | ssh -i ~/.ssh/my.key ubuntu@10.0.0.X "cat >> ~/.ssh/authorized_keys"
