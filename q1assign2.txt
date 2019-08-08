@@ -1,0 +1,31 @@
+
+1)create autoscaling group with elastic load balancer
+
+2)create a session in mobaxstream_personal by using public ipv4,username 
+and private key of one instance of autoscaling group.
+
+check if we are root user by command
+$ sudo su
+# id
+update packages
+# yum update -y
+# pwd
+# cd /var
+# ls -ltr
+# cd /
+# yum install httpd
+# cd /var/www
+# ls -ltr
+# cd html/
+# pwd
+# cat > index.html
+hii
+ctrl d
+# ls -ltr
+# service start httpd
+
+
+
+by using ipv4 we get webpage in browser.
+
+
